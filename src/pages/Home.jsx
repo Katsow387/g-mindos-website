@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import './Home.css';
 
-const electricianHero = "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1920&q=80";
+// Background image from public folder
+const electricianHero = "/Background.jpg";
 
 export default function Home() {
   return (
