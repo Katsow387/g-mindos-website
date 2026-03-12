@@ -1,12 +1,13 @@
 .footer {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); /* Dark grey gradient */
   color: white;
-  padding: 30px 0 10px;
-  border-top: 4px solid #ffd700;
+  padding: 40px 0 10px;
+  border-top: 4px solid #ffd700; /* Gold top border */
   position: relative;
   overflow: hidden;
 }
 
+/* Subtle background icon */
 .footer::before {
   content: '⚡';
   position: absolute;
@@ -23,15 +24,15 @@
   margin: 0 auto;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: 2fr 2fr 1fr;
+  grid-template-columns: 2fr 2fr 1fr; /* 3-column layout */
   gap: 40px;
   position: relative;
   z-index: 2;
 }
 
 .footer-section h3 {
-  color: #ffd700;
-  margin-bottom: 15px;
+  color: #ffd700; /* Gold headings */
+  margin-bottom: 20px;
   font-size: 1.3rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -39,6 +40,7 @@
   display: inline-block;
 }
 
+/* Red/Gold decorative underline for headings */
 .footer-section h3::after {
   content: '';
   position: absolute;
@@ -50,7 +52,7 @@
 }
 
 .footer-section p {
-  margin: 8px 0;
+  margin: 10px 0;
   color: #ccc;
   line-height: 1.5;
   font-size: 0.95rem;
@@ -65,11 +67,19 @@
   transition: all 0.3s;
   font-size: 0.95rem;
   display: inline-block;
+}
+
+.footer-section a:hover {
+  color: #ffd700;
+}
+
+/* Special hover effect for Quick Links */
+.links-section a {
   padding: 5px 0;
   position: relative;
 }
 
-.footer-section a::before {
+.links-section a::before {
   content: '→';
   position: absolute;
   left: -20px;
@@ -78,58 +88,68 @@
   color: #ffd700;
 }
 
-.footer-section a:hover {
-  color: #ffd700;
+.links-section a:hover {
   transform: translateX(20px);
 }
 
-.footer-section a:hover::before {
+.links-section a:hover::before {
   opacity: 1;
   left: 0;
 }
 
-.footer-section .contact-info {
+/* Boxed contact info styling */
+.contact-info {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
-.footer-section .contact-info p {
+.contact-info p {
   background: rgba(255,255,255,0.05);
-  padding: 8px 12px;
+  padding: 10px 15px;
   border-radius: 8px;
   border-left: 3px solid #ffd700;
   transition: all 0.3s;
 }
 
-.footer-section .contact-info p:hover {
-  background: rgba(198,40,40,0.2);
+.contact-info p:hover {
+  background: rgba(198,40,40,0.15); /* Reddish hover */
   transform: translateX(5px);
+}
+
+.contact-info a {
+  color: #ffd700; /* Yellow links */
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 20px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255,215,0,0.2);
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,215,0,0.1);
 }
 
 .footer-bottom p {
   color: #999;
   font-size: 0.85rem;
   letter-spacing: 1px;
+  justify-content: center;
 }
 
-/* Responsive Footer */
+/* ===== MOBILE RESPONSIVENESS ===== */
 @media (max-width: 768px) {
   .footer {
-    padding: 25px 0 10px;
+    padding: 30px 0 10px;
   }
   
   .footer-container {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr; /* Stack into a single column */
+    gap: 30px;
     text-align: center;
+  }
+  
+  .footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
   }
   
   .footer-section h3::after {
@@ -140,33 +160,35 @@
   
   .footer-section p {
     justify-content: center;
+    font-size: 0.9rem;
+    margin: 8px 0;
   }
   
-  .footer-section a::before {
+  /* Disable Quick Links arrow animation on mobile */
+  .links-section a::before {
     display: none;
   }
   
-  .footer-section a:hover {
-    transform: scale(1.1);
+  .links-section a:hover {
+    transform: scale(1.05);
   }
   
-  .footer-section .contact-info p {
-    text-align: left;
+  .contact-info p {
+    text-align: left; /* Keep contact text left-aligned in the center */
+    font-size: 0.9rem;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 @media (max-width: 480px) {
   .footer {
-    padding: 20px 0 8px;
+    padding: 25px 0 8px;
   }
   
   .footer-section h3 {
     font-size: 1.1rem;
-  }
-  
-  .footer-section p,
-  .footer-section a {
-    font-size: 0.9rem;
   }
   
   .footer-bottom p {

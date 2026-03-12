@@ -12,15 +12,16 @@
 
 /* Hero Section - Full Screen */
 .hero {
-  height: 100vh;
+  min-height: 100vh; /* Allow it to grow, but at least full screen */
   width: 100%;
   background-size: cover;
-  background-position: center;
+  background-position: center; /* Default for desktop */
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 100px 0;
 }
 
 .hero-overlay {
@@ -29,7 +30,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay for text readability */
 }
 
 .hero-content {
@@ -44,7 +45,7 @@
 .hero h1 {
   font-size: 5rem;
   font-weight: 700;
-  color: #ffd700;
+  color: #ffd700; /* Yellow/Gold color */
   margin-bottom: 10px;
   letter-spacing: 2px;
   word-break: break-word;
@@ -78,14 +79,14 @@
 
 .hero-btn:hover {
   background: white;
-  color: #c62828;
+  color: #c62828; /* Red background on hover */
   border-color: white;
 }
 
 .hero-btn-call {
-  background: #ffd700;
+  background: #ffd700; /* Yellow button */
   border-color: #ffd700;
-  color: #c62828;
+  color: #c62828; /* Red text */
 }
 
 .hero-btn-call:hover {
@@ -96,6 +97,10 @@
 
 /* ===== MOBILE RESPONSIVENESS ===== */
 @media (max-width: 768px) {
+  .hero {
+    background-position: top center; /* Show the top (electrician) on tablets/large phones */
+    padding: 80px 0;
+  }
   .hero h1 {
     font-size: 3.5rem;
   }
@@ -111,15 +116,20 @@
 }
 
 @media (max-width: 480px) {
+  .hero {
+    background-position: top center; /* Focus on the roof work on mobile */
+    padding: 60px 0;
+  }
   .hero h1 {
     font-size: 2.5rem;
+    letter-spacing: 1px;
   }
   .hero p {
     font-size: 1.2rem;
     margin-bottom: 25px;
   }
   .hero-actions {
-    flex-direction: column;
+    flex-direction: column; /* Stack buttons vertically on small phones */
     gap: 15px;
     align-items: center;
   }

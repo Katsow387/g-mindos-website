@@ -1,11 +1,11 @@
 .header {
-  background-color: #c62828;
+  background-color: #c62828; /* Deep red color */
   color: white;
   padding: 15px 0;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1000; /* Keep header on top of other content */
 }
 
 .header-container {
@@ -31,7 +31,7 @@
 }
 
 .logo-text h1 {
-  color: #ffd700;
+  color: #ffd700; /* Gold/Yellow text */
   margin: 0;
   font-size: 1.5rem;
 }
@@ -60,28 +60,68 @@
 }
 
 .emergency-phone {
-  background-color: #ffd700;
-  color: #c62828;
+  background-color: #ffd700; /* Yellow background */
+  color: #c62828; /* Red text */
   padding: 10px 20px;
   border-radius: 5px;
   font-weight: bold;
   white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
 }
 
+.emergency-phone:hover {
+  background-color: white;
+  color: #c62828;
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
 @media (max-width: 768px) {
+  .header {
+    padding: 10px 0;
+  }
   .header-container {
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
   }
   
   .nav-menu {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .nav-menu a {
+    font-size: 0.9rem;
+    padding: 5px;
   }
   
   .logo {
     flex-direction: column;
+    gap: 5px;
     text-align: center;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+  
+  .logo-text h1 {
+    font-size: 1.3rem;
+  }
+  
+  .logo-text p {
+    font-size: 0.8rem;
+  }
+
+  .emergency {
+    width: 100%;
+    text-align: center;
+  }
+
+  .emergency-phone {
+    font-size: 0.9rem;
+    padding: 8px 15px;
   }
 }
