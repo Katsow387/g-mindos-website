@@ -1,3 +1,5 @@
+/* Home.css – Fully Responsive for Mobile */
+
 * {
   margin: 0;
   padding: 0;
@@ -5,88 +7,107 @@
 }
 
 .home {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   width: 100%;
-  overflow-x: hidden; /* Prevent any accidental horizontal scroll */
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
 }
 
-/* Hero Section - Full Screen */
+/* Hero Section – covers full screen */
 .hero {
-  min-height: 100vh; /* Allow it to grow, but at least full screen */
-  width: 100%;
-  background-size: cover;
-  background-position: center; /* Default for desktop */
   position: relative;
+  width: 100%;
+  height: 100vh;          /* fallback for older browsers */
+  height: 100dvh;         /* dynamic viewport height – best for mobile */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 100px 0;
 }
 
+/* Dark overlay for text readability */
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay for text readability */
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);  /* adjust darkness as needed */
+  z-index: 1;
 }
 
+/* Content container – sits above overlay */
 .hero-content {
   position: relative;
   z-index: 2;
   color: white;
-  padding: 0 20px;
+  padding: 1.5rem;
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;        /* prevents text from stretching too wide on tablets */
+  margin: 0 auto;
 }
 
+/* Headline – fluid scaling using clamp() */
 .hero h1 {
-  font-size: 5rem;
+  font-size: clamp(2.2rem, 10vw, 5rem);
   font-weight: 700;
-  color: #ffd700; /* Yellow/Gold color */
-  margin-bottom: 10px;
-  letter-spacing: 2px;
+  color: #ffd700;          /* your brand gold */
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+  letter-spacing: 1px;
   word-break: break-word;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+/* Subheadline */
 .hero p {
-  font-size: 1.8rem;
+  font-size: clamp(1.1rem, 5vw, 1.8rem);
   font-weight: 300;
-  margin-bottom: 40px;
-  word-break: break-word;
+  margin-bottom: 1.5rem;
+  opacity: 0.95;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+/* Button container */
 .hero-actions {
   display: flex;
-  gap: 20px;
+  gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
 }
 
+/* Base button style */
 .hero-btn {
-  padding: 15px 40px;
-  text-decoration: none;
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-size: clamp(1rem, 4vw, 1.2rem);
   font-weight: 600;
-  font-size: 1.2rem;
+  text-decoration: none;
   border: 2px solid white;
+  border-radius: 40px;      /* pill shape – modern and touch‑friendly */
   transition: all 0.3s ease;
   color: white;
-  min-width: 180px;
+  min-width: 160px;
   text-align: center;
+  background: transparent;
+  backdrop-filter: blur(4px); /* slight blur for extra readability over image */
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .hero-btn:hover {
   background: white;
-  color: #c62828; /* Red background on hover */
+  color: #c62828;           /* your brand red */
   border-color: white;
 }
 
+/* Special style for the "Call Now" button */
 .hero-btn-call {
-  background: #ffd700; /* Yellow button */
+  background: #ffd700;
   border-color: #ffd700;
-  color: #c62828; /* Red text */
+  color: #c62828;
 }
 
 .hero-btn-call:hover {
@@ -95,47 +116,66 @@
   border-color: #ffd700;
 }
 
-/* ===== MOBILE RESPONSIVENESS ===== */
-@media (max-width: 768px) {
-  .hero {
-    background-position: top center; /* Show the top (electrician) on tablets/large phones */
-    padding: 80px 0;
-  }
-  .hero h1 {
-    font-size: 3.5rem;
-  }
-  .hero p {
-    font-size: 1.4rem;
-    margin-bottom: 30px;
-  }
-  .hero-btn {
-    padding: 12px 30px;
-    font-size: 1rem;
-    min-width: 150px;
-  }
-}
+/* ===== MOBILE‑SPECIFIC TWEAKS ===== */
 
+/* For small phones (≤ 480px) – stack buttons vertically */
 @media (max-width: 480px) {
-  .hero {
-    background-position: top center; /* Focus on the roof work on mobile */
-    padding: 60px 0;
+  .hero-content {
+    padding: 1rem;
   }
   .hero h1 {
-    font-size: 2.5rem;
-    letter-spacing: 1px;
+    font-size: 2.2rem;      /* comfortable on small screens */
   }
   .hero p {
     font-size: 1.2rem;
-    margin-bottom: 25px;
+    margin-bottom: 1.2rem;
   }
   .hero-actions {
-    flex-direction: column; /* Stack buttons vertically on small phones */
-    gap: 15px;
+    flex-direction: column;
     align-items: center;
+    gap: 0.8rem;
   }
   .hero-btn {
     width: 100%;
-    max-width: 250px;
-    padding: 12px 20px;
+    max-width: 280px;
+    padding: 0.9rem 1.5rem;
+  }
+}
+
+/* For very tall phones (e.g., modern foldables) – ensure full coverage */
+@media (min-aspect-ratio: 9/16) and (max-aspect-ratio: 9/18) {
+  .hero {
+    height: 100vh;          /* fallback */
+    height: 100dvh;         /* uses dynamic viewport */
+  }
+  .hero-content {
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+  }
+}
+
+/* For landscape orientation on phones */
+@media (orientation: landscape) and (max-height: 600px) {
+  .hero {
+    height: auto;
+    min-height: 100vh;
+  }
+  .hero-content {
+    padding: 2rem 1rem;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 8vw, 4rem);
+  }
+  .hero p {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    margin-bottom: 1rem;
+  }
+  .hero-actions {
+    flex-direction: row;
+    gap: 0.8rem;
+  }
+  .hero-btn {
+    min-width: 140px;
+    padding: 0.6rem 1.5rem;
   }
 }

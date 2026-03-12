@@ -1,40 +1,71 @@
+/* Update your entire index.css file with this code */
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Fonts & Line Heights */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* Global Color Definitions */
+  --primary-red: #c62828;   /* Brand Red */
+  --accent-gold: #ffd700;    /* Brand Gold/Yellow */
+  --text-dark: #213547;
+  --text-light: rgba(255, 255, 255, 0.87);
+  --bg-dark: #242424;
+  --bg-light: #ffffff;
 
-  font-synthesis: none;
+  /* Use Light Mode by Default for this Brand */
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+
+  /* Performance & Anti-Aliasing */
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* Base Body Styles - Use Standard Layout, NOT Flex Centered */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
+  min-height: 100vh;
+  display: block;  /* Standard block layout, not flex */
+}
+
+/* Main Container (Important for Component Layout) */
+.App {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Ensure the hero section takes up available space but allows header/footer */
+main.home {
+  flex: 1;
 }
 
+/* Global Link Styles */
+a {
+  font-weight: 500;
+  color: var(--primary-red);  /* Brand Red */
+  text-decoration: none;      /* Standardize: No underline */
+  transition: color 0.25s;
+}
+
+a:hover {
+  color: #a01d1d;  /* Darker Red on hover */
+}
+
+/* Standard Header/Footer Link Colors */
+.header a, .footer a {
+  color: var(--bg-light);  /* Use light text on dark background */
+}
+
+.header a:hover, .footer a:hover {
+  color: var(--accent-gold); /* Gold on hover */
+}
+
+/* Global Button Styles */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -43,26 +74,53 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.25s;
 }
+
 button:hover {
-  border-color: #646cff;
+  border-color: var(--primary-red);
+  background-color: #2a2a2a;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+/* Brand Secondary Button */
+button.secondary {
+  background-color: var(--accent-gold);
+  color: var(--primary-red);
+}
+
+button.secondary:hover {
+  background-color: white;
+  color: var(--primary-red);
+}
+
+/* Dark Mode Overrides (Optional, If you want to support it) */
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--text-light);
+    background-color: var(--bg-dark);
   }
+
+  a {
+    color: var(--accent-gold);
+  }
+
   a:hover {
-    color: #747bff;
+    color: white;
   }
+
   button {
     background-color: #f9f9f9;
+    color: black;
+  }
+
+  button:hover {
+    background-color: white;
   }
 }
