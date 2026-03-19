@@ -13,10 +13,10 @@ export default function Contact() {
     setMessage('');
     
     emailjs.sendForm(
-      'service_go87jkv',           // ✅ Your Service ID
-      'template_3g2vu5g',          // ✅ Your Template ID
+      'service_go87jkv',           // Your Service ID
+      'template_3g2vu5g',          // Your Template ID
       form.current,
-      'LVVn_GCkmnYjLuCMy'          // ✅ Your Public Key
+      'LVVn_GCkmnYjLuCMy'          // Your Public Key
     )
     .then(() => {
       setMessage('success');
@@ -39,7 +39,9 @@ export default function Contact() {
         <div className="container">
           <span className="emergency-icon">🚨</span>
           <span className="emergency-text">24/7 EMERGENCY SERVICE</span>
-          <span className="emergency-number">📞 060 753 7228</span>
+          <span className="emergency-number">
+            <a href="tel:+277507537228" style={{ color: 'inherit', textDecoration: 'none' }}>📞 060 753 7228</a>
+          </span>
         </div>
       </div>
 
@@ -57,15 +59,33 @@ export default function Contact() {
             <h3>Mindo Massingue</h3>
             <div className="contact-detail">
               <span className="detail-icon">📱</span>
-              <span className="detail-text">WhatsApp: <strong>060 753 7228</strong></span>
+              <span className="detail-text">
+                WhatsApp: <strong>
+                  <a href="https://wa.me/277507537228" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    060 753 7228
+                  </a>
+                </strong>
+              </span>
             </div>
             <div className="contact-detail">
               <span className="detail-icon">📞</span>
-              <span className="detail-text">Phone: <strong>07845 331752</strong></span>
+              <span className="detail-text">
+                Phone: <strong>
+                  <a href="tel:+27845331752" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    084 533 1752
+                  </a>
+                </strong>
+              </span>
             </div>
             <div className="contact-detail">
               <span className="detail-icon">✉️</span>
-              <span className="detail-text">Email: <strong>massinguemindo4@gmail.com</strong></span>
+              <span className="detail-text">
+                Email: <strong>
+                  <a href="mailto:massinguemindo4@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    massinguemindo4@gmail.com
+                  </a>
+                </strong>
+              </span>
             </div>
           </div>
           
@@ -76,7 +96,11 @@ export default function Contact() {
             </div>
             <div className="emergency-phone-large">
               <span className="phone-icon">📞</span>
-              <span className="phone-number">060 753 7228</span>
+              <span className="phone-number">
+                <a href="tel:+277507537228" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  060 753 7228
+                </a>
+              </span>
             </div>
             <p className="emergency-note">Available 24/7 for electrical emergencies</p>
           </div>
@@ -94,7 +118,7 @@ export default function Contact() {
           
           {message === 'error' && (
             <div className="error-message">
-              ✗ Failed to send. Please call our emergency line: 060 753 7228
+              ✗ Failed to send. Please call our emergency line: <a href="tel:+277507537228" style={{ color: 'white', textDecoration: 'underline' }}>060 753 7228</a>
             </div>
           )}
 
