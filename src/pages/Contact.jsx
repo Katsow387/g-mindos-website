@@ -8,29 +8,37 @@ export default function Contact() {
   const [message, setMessage] = useState('');
 
   const sendEmail = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setMessage('');
-    
-    emailjs.sendForm(
-      'service_go87jkv',           // Your Service ID
-      'template_3g2vu5g',          // Your Template ID
-      form.current,
-      'LVVn_GCkmnYjLuCMy'          // Your Public Key
-    )
-    .then(() => {
-      setMessage('success');
-      form.current.reset();
-    })
-    .catch((error) => {
-      console.error('Email failed:', error);
-      setMessage('error');
-    })
-    .finally(() => {
-      setIsSubmitting(false);
-      setTimeout(() => setMessage(''), 5000);
-    });
+  e.preventDefault();
+  setIsSubmitting(true);
+  setMessage('');
+
+  // Get form values directly
+  const templateParams = {
+    name: e.target.name.value,
+    email: e.target.email.value,
+    phone: e.target.phone.value,
+    message: e.target.message.value,
   };
+
+  emailjs.send(
+    'service_go87jkv',
+    'template_3g2vu5g',
+    templateParams,
+    'LVVn_GCkmnYjLuCMy'
+  )
+  .then(() => {
+    setMessage('success');
+    e.target.reset();
+  })
+  .catch((error) => {
+    console.error('Email failed:', error);
+    setMessage('error');
+  })
+  .finally(() => {
+    setIsSubmitting(false);
+    setTimeout(() => setMessage(''), 5000);
+  });
+};
 
   return (
     <div className="contact-page">
